@@ -383,6 +383,142 @@
     font-size:0.85rem;
     color:var(--steel);
   }
+
+  /* ---------- SCROLL REVEAL ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(22px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.is-visible{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .reveal-stagger > *{
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .reveal-stagger.is-visible > *{
+    opacity:1;
+    transform:translateY(0);
+  }
+  .reveal-stagger.is-visible > *:nth-child(1){transition-delay:0s;}
+  .reveal-stagger.is-visible > *:nth-child(2){transition-delay:.08s;}
+  .reveal-stagger.is-visible > *:nth-child(3){transition-delay:.16s;}
+  .reveal-stagger.is-visible > *:nth-child(4){transition-delay:.24s;}
+
+  /* ---------- HERO ENTRANCE ---------- */
+  .hero-eyebrow, .hero h1, .hero-sub, .hero-actions{
+    opacity:0;
+    animation:heroIn .7s ease forwards;
+  }
+  .hero-eyebrow{animation-delay:.05s;}
+  .hero h1{animation-delay:.15s;}
+  .hero-sub{animation-delay:.28s;}
+  .hero-actions{animation-delay:.4s;}
+  @keyframes heroIn{
+    from{opacity:0;transform:translateY(16px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  .hero-visual{
+    opacity:0;
+    animation:heroVisualIn .9s ease forwards;
+    animation-delay:.2s;
+  }
+  @keyframes heroVisualIn{
+    from{opacity:0;transform:scale(.94);}
+    to{opacity:1;transform:scale(1);}
+  }
+
+  /* pulsing bolt + rings */
+  .bolt-glow{
+    animation:boltPulse 2.6s ease-in-out infinite;
+    transform-origin:180px 170px;
+  }
+  @keyframes boltPulse{
+    0%, 100%{filter:drop-shadow(0 0 0px rgba(232,167,58,0));}
+    50%{filter:drop-shadow(0 0 10px rgba(232,167,58,0.75));}
+  }
+  .ring-slow{
+    animation:ringSpin 60s linear infinite;
+    transform-origin:180px 170px;
+  }
+  .ring-slower{
+    animation:ringSpin 90s linear infinite reverse;
+    transform-origin:180px 170px;
+  }
+  @keyframes ringSpin{
+    from{transform:rotate(0deg);}
+    to{transform:rotate(360deg);}
+  }
+  .bolt-tip{
+    animation:tipBlink 2.6s ease-in-out infinite;
+  }
+  @keyframes tipBlink{
+    0%, 100%{opacity:1;}
+    50%{opacity:.4;}
+  }
+
+  /* ---------- INTERACTIVE HOVER LIFT ---------- */
+  .service{
+    transition:background .2s ease, transform .25s ease, box-shadow .25s ease;
+  }
+  .service:hover{
+    background:var(--white);
+    transform:translateY(-4px);
+    box-shadow:0 14px 28px -18px rgba(15,35,64,0.35);
+    z-index:1;
+  }
+  .service-icon{
+    transition:transform .3s ease;
+  }
+  .service:hover .service-icon{
+    transform:translateY(-2px) rotate(-3deg);
+  }
+
+  .std-item{
+    transition:background .2s ease;
+  }
+  .std-item:hover{
+    background:rgba(232,167,58,0.08);
+  }
+  .std-item svg{
+    transition:transform .25s ease;
+  }
+  .std-item:hover svg{
+    transform:scale(1.15);
+  }
+
+  .nav-links a:not(.nav-cta){
+    position:relative;
+  }
+  .nav-links a:not(.nav-cta)::after{
+    content:"";
+    position:absolute;
+    left:0;bottom:-4px;
+    width:0;height:2px;
+    background:var(--amber-dark);
+    transition:width .25s ease;
+  }
+  .nav-links a:not(.nav-cta):hover::after{
+    width:100%;
+  }
+
+  .btn-primary, .nav-cta{
+    transition:background .15s ease, transform .15s ease, box-shadow .2s ease;
+  }
+  .btn-primary:hover{
+    box-shadow:0 10px 20px -10px rgba(232,167,58,0.6);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal, .reveal-stagger > *{opacity:1 !important;transform:none !important;transition:none !important;}
+    .hero-eyebrow, .hero h1, .hero-sub, .hero-actions, .hero-visual{
+      opacity:1 !important;animation:none !important;
+    }
+    .bolt-glow, .ring-slow, .ring-slower, .bolt-tip{animation:none !important;}
+  }
 </style>
 </head>
 <body>
@@ -431,14 +567,14 @@
       </div>
       <div class="hero-visual" aria-hidden="true">
         <svg viewBox="0 0 360 340" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="180" cy="170" r="150" stroke="#2C4A6E" stroke-width="1" stroke-dasharray="3 5"/>
-          <circle cx="180" cy="170" r="110" stroke="#2C4A6E" stroke-width="1" stroke-dasharray="3 5"/>
+          <circle class="ring-slow" cx="180" cy="170" r="150" stroke="#2C4A6E" stroke-width="1" stroke-dasharray="3 5"/>
+          <circle class="ring-slower" cx="180" cy="170" r="110" stroke="#2C4A6E" stroke-width="1" stroke-dasharray="3 5"/>
           <line x1="30" y1="170" x2="330" y2="170" stroke="#2C4A6E" stroke-width="1"/>
           <line x1="180" y1="20" x2="180" y2="320" stroke="#2C4A6E" stroke-width="1"/>
           <rect x="165" y="230" width="30" height="70" fill="#173156" stroke="#4C5F73"/>
           <line x1="180" y1="230" x2="180" y2="70" stroke="#4C5F73" stroke-width="3"/>
-          <path d="M180 70 L165 130 H180 L168 190" stroke="#E8A73A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          <circle cx="180" cy="65" r="6" fill="#E8A73A"/>
+          <path class="bolt-glow" d="M180 70 L165 130 H180 L168 190" stroke="#E8A73A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle class="bolt-tip" cx="180" cy="65" r="6" fill="#E8A73A"/>
           <circle cx="90" cy="170" r="4" fill="#4C5F73"/>
           <circle cx="270" cy="170" r="4" fill="#4C5F73"/>
           <circle cx="180" cy="285" r="4" fill="#4C5F73"/>
@@ -450,13 +586,13 @@
   <!-- SERVICES -->
   <section class="services" id="servicos">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head reveal">
         <span class="tag">Serviços</span>
         <h2>Engenharia elétrica do projeto à execução</h2>
         <p>Cada frente de atuação é conduzida com responsabilidade técnica, do dimensionamento inicial à entrega final, com a documentação exigida em cada etapa.</p>
       </div>
 
-      <div class="service-list">
+      <div class="service-list reveal-stagger">
 
         <div class="service">
           <svg class="service-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6">
@@ -531,13 +667,13 @@
   <!-- STANDARDS -->
   <section class="standards" id="normas">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head reveal">
         <span class="tag">Conformidade</span>
         <h2>Atuamos em conformidade com as principais normas técnicas</h2>
         <p>Todo projeto é desenvolvido e executado com base na legislação e nas normas vigentes do setor elétrico.</p>
       </div>
 
-      <div class="std-grid">
+      <div class="std-grid reveal-stagger">
         <div class="std-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
           <span>
@@ -573,14 +709,14 @@
   <!-- MISSION -->
   <section class="mission" id="sobre">
     <div class="wrap">
-      <p>Protegemos pessoas e patrimônio, e impulsionamos o futuro com engenharia responsável.</p>
+      <p class="reveal">Protegemos pessoas e patrimônio, e impulsionamos o futuro com engenharia responsável.</p>
     </div>
   </section>
 
   <!-- CONTACT -->
   <section class="contact" id="contato">
     <div class="wrap">
-      <div class="contact-box">
+      <div class="contact-box reveal">
         <div>
           <h2>Vamos falar sobre o seu projeto</h2>
           <p>Entre em contato para solicitar um orçamento ou tirar dúvidas técnicas sobre SPDA, instalações elétricas, carregadores EV ou laudos.</p>
@@ -625,6 +761,17 @@
     navLinks.classList.remove('open');
     menuBtn.setAttribute('aria-expanded', false);
   }));
+
+  const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => revealObserver.observe(el));
 </script>
 
 </body>

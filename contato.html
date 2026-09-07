@@ -200,6 +200,38 @@
   footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
   footer .logo{font-size:1rem;}
   footer .foot-note{font-size:0.85rem;color:var(--steel);}
+
+  /* ---------- ENTRANCE ANIMATION ---------- */
+  .page-hero .tag, .page-hero h1, .page-hero p{
+    opacity:0;
+    animation:fadeUp .6s ease forwards;
+  }
+  .page-hero .tag{animation-delay:.05s;}
+  .page-hero h1{animation-delay:.15s;}
+  .page-hero p{animation-delay:.25s;}
+  .form-card, .info-block, .whatsapp-block{
+    opacity:0;
+    animation:fadeUp .6s ease forwards;
+  }
+  .form-card{animation-delay:.15s;}
+  .info-block{animation-delay:.28s;}
+  .whatsapp-block{animation-delay:.4s;}
+  @keyframes fadeUp{
+    from{opacity:0;transform:translateY(16px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+
+  .submit-btn{transition:background .15s ease, transform .15s ease, box-shadow .2s ease;}
+  .submit-btn:hover{transform:translateY(-1px);box-shadow:0 10px 20px -10px rgba(232,167,58,0.6);}
+  .btn-primary{transition:background .15s ease, transform .15s ease, box-shadow .2s ease;}
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 10px 20px -10px rgba(232,167,58,0.6);}
+  .field input, .field select, .field textarea{transition:background .15s ease, box-shadow .15s ease;}
+
+  @media (prefers-reduced-motion: reduce){
+    .page-hero .tag, .page-hero h1, .page-hero p, .form-card, .info-block, .whatsapp-block{
+      opacity:1 !important;animation:none !important;
+    }
+  }
 </style>
 </head>
 <body>
