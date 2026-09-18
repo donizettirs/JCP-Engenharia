@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <!-- Circular Energy Mark for Favicon and Emblems -->
+  <g transform="translate(100, 100)" fill="#1B4B6F" stroke="#1B4B6F">
+    <!-- Upper-Left Circular Arc -->
+    <path 
+      d="M 18 -66 A 68 68 0 0 0 -51 46" 
+      fill="none" 
+      stroke-width="8" 
+      stroke-linecap="round" 
+    />
+
+    <!-- Lower-Right Circular Arc -->
+    <path 
+      d="M -18 66 A 68 68 0 0 0 51 -46" 
+      fill="none" 
+      stroke-width="8" 
+      stroke-linecap="round" 
+    />
+
+    <!-- Main High-Voltage Lightning Bolt -->
+    <polygon 
+      points="49,-98 7,-9 43,-9 -26,102 15,9 -20,9" 
+      stroke="none"
+    />
+
+    <!-- Dynamic Top-Right Accent Spike -->
+    <polygon 
+      points="49,-98 36,-37 43,-35 48,-69" 
+      stroke="none"
+    />
+
+    <!-- Dynamic Bottom-Left Accent Spike -->
+    <polygon 
+      points="-26,102 -13,37 -20,35 -25,69" 
+      stroke="none"
+    />
+  </g>
+</svg>
